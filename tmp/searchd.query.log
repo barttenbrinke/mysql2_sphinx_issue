@@ -1,0 +1,5 @@
+[Wed Oct 10 22:21:10.314 2012] 0.000 sec [ext2/0/ext 0 (0,20)] [content_stemmer] test
+[Wed Oct 10 22:21:18.604 2012] 0.000 sec [ext2/0/ext 2 (0,20)] [content_stemmer] a
+[Wed Oct 10 22:24:45.543 2012] 0.000 sec [ext2/0/ext 2 (0,20)] [content_stemmer] a
+[Wed Oct 10 22:26:51.971 2012] 0.000 sec [ext2/0/ext 2 (0,20)] [content_stemmer] a
+[Wed Oct 10 22:28:12.677 2012] 0.000 sec [ext2/0/ext 0 (0,20)] [content_stemmer] test

@@ -1,0 +1,59 @@
+== Running Sphinx
+
+```
+brew install sphinx
+searchd --config ./config/sphinx.conf
+```
+Sphinx will now demonize and run in the background
+
+== Connect through mysql-cli
+```
+mysql -u foobar --port 9306 --protocol tcp --host localhost
+```
+Ensure the server number is "Server version: 2.0.4-release (r3135)", otherwise you accidentally connected to Mysql
+```
+SELECT * FROM content_stemmer WHERE MATCH('a'); SHOW META;
+```
+You should be getting meta results like these:
+
+```
++--------+--------+
+| id     | weight |
++--------+--------+
+| 920301 |   1636 |
+| 930301 |   1636 |
++--------+--------+
+2 rows in set (0.00 sec)
+
++---------------+-------+
+| Variable_name | Value |
++---------------+-------+
+| total         | 2     |
+| total_found   | 2     |
+| time          | 0.000 |
+| keyword[0]    | a     |
+| docs[0]       | 2     |
+| hits[0]       | 2     |
++---------------+-------+
+6 rows in set (0.00 sec)```
+```
+
+== Connect through mysql2 gem
+
+```
+bundle install
+bundle exec irb
+```
+
+In irb enter the following:
+
+```
+require 'mysql2'
+sphinx = Mysql2::Client.new(:host => '127.0.0.1', :port => 9306, :database => 'noop', :username => 'noop', :flags => Mysql2::Client::MULTI_STATEMENTS)
+sphinx_ql_query = "SELECT * FROM content_stemmer WHERE MATCH('test'); SHOW META;"
+results = sphinx.query(sphinx_ql_query).collect{|x| x}
+p sphinx.next_result
+```
+
+sphinx.next_result should be true, which it isnt.
+
