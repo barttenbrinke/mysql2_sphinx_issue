@@ -44,7 +44,7 @@ In irb enter the following:
 
     require 'mysql2'
     sphinx = Mysql2::Client.new(:host => '127.0.0.1', :port => 9306, :database => 'noop', :username => 'noop', :flags => Mysql2::Client::MULTI_STATEMENTS)
-    sphinx_ql_query = "SELECT * FROM content_stemmer WHERE MATCH('test'); SHOW META;"
+    sphinx_ql_query = "SELECT * FROM content_stemmer WHERE MATCH('a'); SHOW META;"
     results = sphinx.query(sphinx_ql_query).collect{|x| x}
     p sphinx.next_result
 
