@@ -1,3 +1,7 @@
+== Mysql2 Sphinx Issue
+This repo contains a simple reproduction of the Sphinx mysql2 multistatement issue.
+The original issue can be found here: https://github.com/brianmario/mysql2/issues/291
+
 == Running Sphinx
 
     brew install sphinx
